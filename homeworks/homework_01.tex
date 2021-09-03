@@ -1,0 +1,98 @@
+\documentclass[11pt,nocut]{article}
+
+\usepackage{../../latex_style/packages}
+\usepackage{../../latex_style/notations}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{1pt}
+\fancyhead[R]{DSGA1024 - Fall 2021}
+\fancyhead[L]{HW1 - Vector Spaces - due September 12, 2021 at 12pm}
+
+
+% \title{\vspace{-2.0cm}%
+% 	Optimization and Computational Linear Algebra for Data Science\\
+% Homework 1: Vector spaces}
+% % \author{Léo \textsc{Miolane} \ $\cdot$ \ \texttt{leo.miolane@gmail.com}}
+% \date{\vspace{-1cm} Due on September 12, 2020}
+\setcounter{section}{1}
+
+\begin{document}
+% \maketitle
+
+\input{../preamble_homeworks.tex}
+
+\vspace{1cm}
+
+\begin{problem}[3 points]
+	Are the following sets subspaces of $\R^2$? Draw a picture and justify your answer using the definition of a subspace. If yes, indicate the dimension of the subspace and a basis, add the basis vectors on your drawing.
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item $E_1= \big\{ (x,y) \in \R^2 \, \big| \, x + 5y = 2 \big\}$.
+		\item $E_2= \big\{ (x,y) \in \R^2 \, \big| \, x + 5y = 0 \big\}$.
+		\item $E_3= \big\{ (x,y) \in \R^2 \, \big| \, x^2 + y^2 = 2 \big\}$.
+	\end{enumerate}
+\end{problem}
+
+\vspace{1mm}
+
+\begin{problem}[2 points]
+	Are the following sets subspaces of $\R^3$? Justify your answer using the definition of a subspace. If yes, indicate the dimension of the subspace and a basis.
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item $E_4= \big\{ (x,y,z) \in \R^3 \, \big| \, x + y = 0 \big\}$.
+		\item $E_5= \big\{ (x,y,z) \in \R^3 \, \big| \, x + y = 0 \text{ and } - y + 3z = 0 \big\}$.
+	\end{enumerate}
+\end{problem}
+
+\vspace{1mm}
+
+
+\begin{problem}[2 points]\label{prob:canon}
+Let us define the vectors $e_1, \dots, e_n \in \R^n$ by
+	\begin{align*}
+		e_1 &= (1, 0, 0, \dots, 0) \\
+		e_2 &= (0, 1, 0, \dots, 0) \\
+		\vdots & \\
+		e_n &= (0, 0, 0, \dots, 1).
+	\end{align*}
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+        \item Verify that the family $(e_1, \dots, e_n)$ is a basis of $\R^n$. This basis is called the ``canonical basis'' of $\R^n$. What is the dimension of $\R^n$? 
+        \item Give an example of hyperplane and an example of a line of $\R^n$ using spans of subsets of $(e_1, \dots, e_n)$.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}[2 points] 
+    Consider $v_1, \dots, v_q \in \R^n$ linearly independent vectors and $u_1, \dots, u_p \in \R^n$ such that $\Span(u_1, \dots, u_p) = \R^n$
+    \begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+        \item Show that $q \leq n$ (hint: remember what is the dimension of $\R^n$, you can use a lemma from the lecture).
+        \item Using that $dim(\Span(u_1, \cdots, u_p))\leq p$ (you should convinve yourself that it is true), show that $p \geq n$.
+        \item Assuming that $q<n$, one can show that there exists $k$ ($1 \leq k \leq p)$ such that $(v_1, \dots, v_q, u_k)$ is linearly independent.
+        From there, allowing a renumbering of the indices of $u_i$-s, there actually exists an interger $m$ such that 
+        \begin{itemize}
+            \item[(i)] $(v_1, \dots, v_q, u_1, \dots, u_{m-q})$ is linearly independent. 
+            \item[(ii)] $\forall i$ $(v_1, \dots, v_q, u_1, \dots, u_{m-q}, u_i)$ is linearly dependent.
+        \end{itemize}
+        Assuming the above stated properties (i) and (ii), show that $m=n$. \\That shows that $(v_1, \dots, v_q, u_1, \dots, u_{n-q})$ is a base of $\R^n$ and that given a spanning family of a vector space, it is always possible to complement a family of linearly independent vectors to form a base. Let's apply that in $\R^4$. 
+        \item We have $\Span(u_1, \dots u_5)= \R^4$ for $u_1 = (1, 2, 0, 0)$, $u_2 = (2, 1, 0, 0)$, $u_3 = (1, 0, 0, 1)$, $u_4 = (1, 1, 1, 0)$ and $u_5 = (0, 1, 1, 0)$ (again no need to prove it, but you should convince yourself it is true). Using vectors in the sets $(u_1, \dots u_5)$ give a basis of $\R^4$ including the canonical basis vectors $e_1 = (1, 0, 0, 0)$ and $e_3 = (0, 0, 1, 0)$. Justify your answer.
+    \end{enumerate}
+\end{problem}
+
+\vspace{1mm}
+
+\begin{problem}[$\star$]
+Consider $V$ and $G$ two vector spaces of finite dimension. Show the equivalence:
+$$
+V = G \Longleftrightarrow \left\{\begin{array}{l}
+\dim(V) = \dim(G) \\
+V \subset G.
+\end{array}\right.
+$$
+\end{problem}
+
+\vspace{1mm}
+
+
+% \centerline{\pgfornament[width=7cm]{87}}
+
+%\bibliographystyle{plain}
+%\bibliography{./references.bib}
+\end{document}

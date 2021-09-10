@@ -1,0 +1,142 @@
+\documentclass[11pt,nocut]{article}
+
+\usepackage{../../latex_style/packages}
+\usepackage{../../latex_style/notations}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{1pt}
+\fancyhead[R]{DSGA1024 - Fall 2021}
+\fancyhead[L]{HW2 - Matrices \& linear transformations - due September 19, 2021 }
+
+
+% \title{\vspace{-2.0cm}%
+% 	Optimization and Computational Linear Algebra for Data Science\\
+% Homework 1: Vector spaces}
+% % \author{Léo \textsc{Miolane} \ $\cdot$ \ \texttt{leo.miolane@gmail.com}}
+% \date{\vspace{-1cm} Due on September 12, 2020}
+\setcounter{section}{2}
+
+\begin{document}
+% \maketitle
+
+\input{../preamble_homeworks.tex}
+
+\vspace{1cm}
+
+\begin{problem}[2 points]
+	Which of the following are linear transformations? Justify.
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item 
+			$\displaystyle
+			T: \left| 
+			\begin{array}{ccc}
+				\R^2 & \to & \R \\
+				(x,y) & \mapsto & x-y
+			\end{array}
+		\right.
+		$
+	\item 
+            $\displaystyle
+            T: \left| 
+            \begin{array}{ccc}
+                \R^2 & \to & \R^2 \\
+                (x,y) & \mapsto & (3x + y, x - xy)
+            \end{array}
+        \right.
+        $
+	\item 
+			$\displaystyle
+			T: \left| 
+			\begin{array}{ccc}
+				\R^{n \times n} & \to & \R^n \\
+				A & \mapsto & \mathrm{diag}(A)
+			\end{array}
+		\right.\quad$ where $\mathrm{diag}(A)$ is the diagonal of the matrix $A$, defined by 
+		$$\mathrm{diag}(A) = (A_{1,1}, \dots A_{n,n}) \,.$$
+    \item 
+        $\displaystyle
+        T: \left| 
+        \begin{array}{ccc}
+            \R^{n \times n} & \to & \R^{n \times n}\\
+            A & \mapsto & A^{-1}
+        \end{array}
+    \right.\quad$ defined on the set of homothety matrices $S = \{ \lambda \Id_n \, | \, \lambda \in \R^* \}$ (see slide 19 of lec 02), recall that $\R^*$ is the set of real without $0$. 
+	\end{enumerate}
+\end{problem}
+
+\vspace{5mm}
+\begin{problem}
+	Consider a matrix $A \in R^{m \times n}$ and denote by $(c_1, \dots c_n)$ its columns (vectors in $\R^m$). Prove the equality of the sets 
+	$$
+	\Im(A)  = \Span(c_1, \dots, c_n).
+	$$
+	Recall that $\Im(A) \stackrel{\text{def}}{=}
+	\{ Ax \, | \, x \in \R^n \}$.
+\end{problem}
+
+
+\begin{problem}[3 points] (Wait for after next lab to complete this problem! or have a look at the last few slides  we did not cover during class that are now completed on the website to find out what Gaussian elimination does.)
+Let $$A = \left(\begin{matrix} 1 & 1 & 1 \\
+	2 & 4 & 4 \\
+	3 & 7 & k
+	\end{matrix}\right)$$.
+		\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		  \item Using Gaussian elimination  solve $Ax = 0$ and give a basis of $\Ker A$ (show all your steps). You will have to differentiate cases according to values of $k$.
+		  \item Why does the system $A x = (1,2,3)$ has at least one solution (for any value of k)? Do not solve the system, use previous results of this HW to justify your answer. Find all values of $k$ for which the system $A x = (1,2,3)$ has infinitely many solutions. 
+		  \item Find all values of $k$ for which the system $A x = (10, 1, 2017)$ has exactly one solution. Give this solution as a function of $k$.
+	\end{enumerate}
+\end{problem}
+
+\begin{problem}[2 points]
+	Let $B$ and $P$ be the matrices of in $\R^{3 \times 3}$:
+	$$
+	P = 
+	\begin{pmatrix}
+		0 & 1 & 0\\
+		1 & 0 & 0\\
+		0 & 0 & 1\\
+	\end{pmatrix},
+	\quad
+	B = 
+	\begin{pmatrix}
+		B_{1,1} & B_{1,2} & B_{1,3}\\
+		B_{2,1} & B_{2,2} & B_{2,3}\\
+		B_{3,1} & B_{3,2} & B_{3,3}\\
+	\end{pmatrix}
+	$$
+	with arbitrary entries for $B$.
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item Compute the matrix product $BP$. Why is $P$ called a permutation matrix?
+		\item Compute $PB$. What can you notice?
+	\end{enumerate}	
+\end{problem}
+\vspace{5mm}
+
+
+\begin{problem}[$\star$]
+	Let $A 
+	= \begin{pmatrix}
+		2 & -1 \\
+		2 & -1
+	\end{pmatrix}
+	\in \R^{2 \times 2}$ 
+	and $\displaystyle
+	T: \left| 
+	\begin{array}{ccc}
+		\R^{n \times n} & \to & \R^{n \times n}\\
+		M & \mapsto & AM
+	\end{array}
+\right.\quad$.
+\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+	\item Show that $T$ is linear. 
+	\item Give a basis of $\Ker(T)$ and a basis of $\Im(T)$.
+\end{enumerate} 
+\end{problem}
+
+
+% \centerline{\pgfornament[width=7cm]{87}}
+
+%\bibliographystyle{plain}
+%\bibliography{./references.bib}
+\end{document}

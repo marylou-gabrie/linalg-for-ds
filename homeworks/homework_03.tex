@@ -1,0 +1,104 @@
+\documentclass[11pt,nocut]{article}
+
+\usepackage{../../latex_style/packages}
+\usepackage{../../latex_style/notations}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{1pt}
+\fancyhead[R]{DSGA1024 - Fall 2021}
+\fancyhead[L]{HW3 - Matrix Rank - due September 26, 2021 at 12pm}
+
+\setcounter{section}{3}
+
+\begin{document}
+
+\input{../preamble_homeworks.tex}
+
+\vspace{1cm}
+
+\begin{problem}[2.5 points]
+True or false? Give a reason if true and a counterexample if false.
+\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+  \item A square matrix with a column of zeros cannot be invertible.
+  \item If every row of a matrix adds up to zero the matrix must be singular.
+  \item If every column of a matrix adds up to zero the matrix must be singular.
+  \item Every matrix with 1's down the main diagonal is invertible.
+  \item If $A$ is invertible, then $A^{-1}$ and $A^2$ are invertible.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}[2.5 points]
+    Let $ A = \begin{pmatrix}
+        5a - 2 & 3a & 3a-3 \\
+        -4a + 2 & -3a + 1 & -2a + 2 \\
+        -4a + 2 & -3a & -2a + 3
+    \end{pmatrix}
+    $ for a real number $a$.
+    \begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+        \item Determine the rank of $A$ for all values of $a$, remember that you can use linear operations on rows and columns.
+        \item Determine a basis of the nullspace $Ker(A)$ and image space $Im(A)$ for $a = 0$.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}[2 points]
+    Let $ A = \begin{pmatrix}
+        1 & 0\\
+        2 & 3
+    \end{pmatrix}
+    $,  
+    $$
+    B = \begin{pmatrix}
+        1 & 0 & 0 \\
+        2 & 3 & 0 \\
+        4 & 5 & 0
+    \end{pmatrix}
+    \text{ and }
+    C = \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        2 & 3 & 0 & 0 \\
+        0 & 4 & 5 & 0 \\
+        6 & 0 & 7 & 8
+    \end{pmatrix}
+    \text{ and }
+    D = \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        2 & 3 & 0 & 0 \\
+        0 & 4 & 0 & 0 \\
+        0 & 5 & 6 & 0
+    \end{pmatrix}
+    $$ 
+    \begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+        \item Determine the ranks of $A$, $B$, $C$ and $D$ by reasoning on the dimension of the span of the columns of the matrices.
+        \item Consider a generic lower-triangular matrix $M \in \R^{n\times n}$(meaning that the entries $M_{ij} = 0$ if $j>i$). Show that if all diagonal entries of $M$ are non-zero, $M$ is invertible. 
+        \item Show that if one of the diagonal entries $M_{ii} = 0$, then the matrix is not invertible.
+        \item Consider a generic upper-triangular matrix $M \in \R^{n\times n}$($M_{ij} = 0$ if $j<i$). At what condition is $M$ invertible?
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}[2 points]
+    We will build a formal proof that for all $L\in R^{n \times m}$, $\rank(L) = \rank(L^\top)$.
+    \begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+        \item Show that for any matrices $A\in \R^{n \times k}$, $B \in \R^{k \times m}$, $\rank(A) \geq \rank(AB)$.
+        \item Given a matrix $L\in R^{n \times m}$, show that $\ker(L) = \ker(L^\top L)$ (hint: you may want to consider $y = Lx$).
+        \item Using ({\bf a}) and ({\bf b}) Deduce that $\rank(L) = \rank(L^\top)$ (hint: use the rank-nullity theorem).
+    \end{enumerate}
+
+\end{problem}
+
+
+
+\begin{problem}[$\star$] Let $A \in \R^{n\times n}$ given by 
+    $$
+    A = \begin{pmatrix}
+        0 & 0 & \cdots & 0 & 1 \\
+        0 & \cdots & \cdots & 1& 0 \\
+        \vdots & & & \vdots\\
+        0 & 1 & 0& \cdots & \vdots \\
+        1 & 0 & \cdots & \cdots & 0
+    \end{pmatrix}.
+    $$
+    Compute $A^k$ for all $k \in \mathbb{N}$.
+\end{problem}
+
+\end{document}

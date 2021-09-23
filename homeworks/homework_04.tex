@@ -1,0 +1,69 @@
+\documentclass[11pt,nocut]{article}
+
+\usepackage{../../latex_style/packages}
+\usepackage{../../latex_style/notations}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{1pt}
+\fancyhead[R]{DSGA1024 - Fall 2021}
+\fancyhead[L]{HW4 - Norms and Inner Products - due October 3, 2021 at 12pm}
+
+\setcounter{section}{4}
+
+\begin{document}
+% \maketitle
+
+\input{../preamble_homeworks.tex}
+
+\begin{problem}[3 points]
+    For vectors $x = (x_1, x_2)$ in $\R^2$ we define $N(x) = \max(|x_1|, |x_2|)$.
+    \begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+        \item Show that $N(\cdot)$ is a norm on $\R^2$. 
+        \item Let $x = (8, 0)$ and $y = (7, 7)$. Using the $N(\cdot)$, which of $x$ and $y$ has bigger norm? Using the Euclidian norm, which of $x$ and $y$ has bigger norm?
+        \item Imagine that $x=(x_1,x_2)$ represents one student's grade at the midterm ($x_1$) and at the final ($x_2$). To rank students in the class, would you rather choose to apply $N(\cdot)$ or the Euclidian norm to their grades? Explain the reason of your choice.
+    \end{enumerate}
+\end{problem}
+
+\vspace{1cm}
+
+\begin{problem}[3 points]
+    Suppose that we define an inner product $\langle \cdot , \cdot \rangle_A$ by $$\langle x , y \rangle_A = x ^\top A y = \sum_{i,j=1}^N x_i A_{ij}y_j$$ for some $A \in \mathbb{R}^{n\times n}$. Prove that in order for $\langle \cdot , \cdot \rangle_A$ to be an inner product the following conditions are necessary:
+    \begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+        \item $A$ is symmetric,
+        \item $A_{ii} > 0$ for $i = 1 \cdots n$,
+        \item $A$ is invertible.
+    \end{enumerate}  
+\end{problem}
+
+\begin{problem}[1.5 points]
+    Let $S$ be a subspace of $\R^n$ with $x \mapsto P_S(x)$ the orthogonal projector of all $x \in \R^n$. We will use the Euclidian dot product as our inner product $\langle x, y\rangle = x \cdot y$. Show that for any $x \in \R^n$
+    \begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+        \item for any vector $y$ in $S$, $x \cdot y = P_S(x) \cdot y $,
+        \item $x - P_S(x)$ is orthogonal to $S$,
+        \item $\lVert P_S(x) \rVert \leq \lVert x \rVert$.
+    \end{enumerate}  
+\end{problem}
+
+\vspace{1cm}
+
+\begin{problem}[1.5 point]
+    Show that for any vector $x = (x_1, \cdots, x_n) \in \R^n$: $\displaystyle \left(\sum_{k=1}^n x_k \right)^2 \leq n \sum_{k = 1}^n x_k^2$.
+\end{problem}
+
+\vspace{1cm}
+
+\begin{problem}[$\star$] Recall Cauchy-Schwarz inequality. Let $\| \cdot \|$ be the norm induced by the inner product $\langle \cdot , \cdot \rangle$ on the vector space $V$.  Then for all $x,y \in V$:
+    \begin{itemize}
+        \item[- ] $| \langle x,y \rangle | \leq \|x\| \, \|y\|$.
+    	\item[- ] Moreover, there is equality if and only if $x$ and $y$ are linearly dependent, i.e.\ $x = \alpha y$ or $y = \alpha x$ for some $\alpha \in \R$.
+    \end{itemize}
+Prove Cauchy-Schwarz inequality by studying the function $f: t \mapsto \lVert x - t y \rVert_2^2$, for $t$ real and for any $x,y \in V$. Be carefull to justify everything precisely.
+\end{problem}
+
+
+% \centerline{\pgfornament[width=7cm]{87}}
+
+%\bibliographystyle{plain}
+%\bibliography{./references.bib}
+\end{document}

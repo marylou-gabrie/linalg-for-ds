@@ -1,0 +1,85 @@
+\documentclass[11pt,nocut]{article}
+
+\usepackage{../../latex_style/packages}
+\usepackage{../../latex_style/notations}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{1pt}
+\fancyhead[R]{DSGA1014 - Fall 2021}
+\fancyhead[L]{HW5 - Orthogonal matrices - due October 10, 2021 at 12pm}
+
+
+\setcounter{section}{5}
+
+\begin{document}
+% \maketitle
+
+\input{../preamble_homeworks.tex}
+
+\begin{problem}[2.5 points]
+    Give an othonormal basis of $\R^3$ using the Gram-Schmidt algorithm starting from the linearly independent family $(v_1, v_2, v_3)$ where $v_1 = (1, 1, 1)$, $v_2 = (2, 1, 1)$ and $v_3 = (2, 0, 1)$.
+\end{problem}
+
+\vspace{1cm}
+
+\begin{problem}[2.5 points]
+    Consider $ U = \Span\left((\frac 1 2, \frac 1 2, \frac 1 2, \frac 1 2)\right)$ and $V = \Span\left((1, 0, 0, 0),(0, 1, 0, 0)\right)$, two subspaces of $\R^4$.
+    \begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+        \item Compute the canonical matrix $M_U \in \R^{4\times 4}$ of orthogonal projection $P_U(\cdot)$ onto subspace $U$. What is the rank of $M_U$?
+        \item Compute the canonical matrix $M_V \in \R^{4\times 4}$ of orthogonal projection $P_V(\cdot)$ onto subspace $V$. What is the rank of $M_V$?
+        \item Let $x=(1,2,3,4)$ in $\R^4$, compute $y = P_U \circ P_V (x)$ and $z = P_V \circ P_U (x)$. Do we have $y = z$? 
+        \item Compute the matrix products $M_U M_V$ and $M_V M_U$. Do $M_U$ and $M_V$ "commute", meaning do we have $M_U M_V = M_V M_U$. Can you give an intuition of why it is the case looking the definitions of $U$ and $V$?
+        \item Considering now $ U' = \Span\left((\frac{1}{\sqrt{2}}, \frac{1}{ \sqrt{2}}, 0, 0)\right)$. Compute $M_{U'}$. Do we have $M_{U'}M_V = M_{V}M_{U'}$? Can you give an intuition why?
+    \end{enumerate}
+\end{problem}
+
+\vspace{1cm}
+
+\begin{problem}[1 points]  
+    Consider $L$ a linear transformation from $\R^n$ to $\R^n$ and denote by $\tilde L \in \R^{n \times n}$ its canonical matrix. Let $(u_1, \cdot, u_n)$ be any orthonormal basis of $\R^n$ and 
+    $$ U = \begin{pmatrix}
+        | & & | \\
+        u_1 & \cdots & u_n\\
+        | & & |
+    \end{pmatrix}\in \R^{n \times n}$$.
+
+Show that $\tilde L ' = U^\top \tilde L U$ computes the transformation of vectors in $\R^n$ using coordinates in the basis $(u_1, \cdots, u_n)$.
+
+\end{problem}
+
+
+\vspace{1cm}
+
+
+\begin{problem}[3 points]
+In this problem, we will see how to compress, by using a particular orthonormal basis called a ``discrete cosine basis''.
+\\
+All the questions are in the jupyter notebook \texttt{DCT.ipynb} and have to be answered directly in the notebook. (Submit only a pdf export of your notebook: Print $\to$ Save as pdf)
+\\
+You have to use \texttt{Python} and its library \texttt{numpy}. A useful command:
+\texttt{ A @ B }: performs the matrix product of the matrix \texttt{A} with the matrix \texttt{B}.
+
+\end{problem}
+
+\vspace{1cm}.
+
+\begin{problem}[$\star$] Let $S$ be a subspace of $\R^n$. We define the orthogonal complement of $S$ by
+	$$
+	S^{\perp} \defeq 
+	\big\{ x \in \R^n \, \big| \, x \perp S \big\} = 
+	\big\{ x \in \R^n \, \big| \, \forall y \in S, \, \langle x,y \rangle = 0 \big\}.
+	$$
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item Show that $S^{\perp}$ is a subspace of $\R^n$.
+		\item Show that $\dim(S^{\perp}) = n - \dim(S)$. 
+		\item Show that for any $u \in \R^n$, we can find $x \in S$ and $y \in S^{\perp}$ such that $u = x + y$.
+	\end{enumerate}
+\end{problem}
+
+
+% \centerline{\pgfornament[width=7cm]{87}}
+
+%\bibliographystyle{plain}
+%\bibliography{./references.bib}
+\end{document}

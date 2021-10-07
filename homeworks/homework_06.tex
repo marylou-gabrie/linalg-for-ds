@@ -1,0 +1,96 @@
+\documentclass[11pt,nocut]{article}
+
+\usepackage{../../latex_style/packages}
+\usepackage{../../latex_style/notations}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{1pt}
+\fancyhead[R]{DSGA1014 - Fall 2021}
+\fancyhead[L]{HW6 - Eigenvalues/vectors \& Markov chains - due October 17, 2021 }
+
+
+\setcounter{section}{6}
+
+\begin{document}
+% \maketitle
+
+\input{../preamble_homeworks.tex}
+
+\begin{problem}[2 points]
+    
+    \begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+        \item Show that 6 is an eigenvalue for the matrices $A$ and $B$ in $\R^3$ defined below. In each case give one associate eigenvector.
+        $$
+        A = \begin{pmatrix}
+            1 & 2 & 3\\
+            2 & 3 & 1\\
+            3 & 1 & 2
+        \end{pmatrix} , \quad
+        B = \begin{pmatrix}
+            1 & 2 & 3\\
+            4 & 0 & 2\\
+            4 & 5 & -3
+        \end{pmatrix} 
+        $$
+        \item Let $A \in \R^{n \times n}$ be a square matrix such that the sum of its rows is equal. In other words, there exists $\mu \in \R$ such that for any integer $i$ $(1 < i \leq n)$, $\sum_{j=1}^n A_{i,j} = \mu$. Show that $A$ admits one pair of eigenvector-eigenvalue and give their values. 
+    \end{enumerate}
+\end{problem}
+
+\vspace{1cm}
+
+\begin{problem}[2 points]
+    For a square symmetric matrix, we call eigen decomposition the collection of all its eigenvector-eigenvalue pairs. Let $A\in \R^{n\times n}$ be a square symmetric matrix. Give the eigen decomposition of $A^k$ as a function of the eigen demcomposition of $A$ for any integer $k > 0$.
+\end{problem}
+
+\vspace{1cm}
+
+\begin{problem}[2 points]
+    The trace of a square $A\in \R^{n\times n}$ matrix is defined as the sum of its diagonal elements
+    $$
+    \mathrm{Tr}(A) = \sum_{i=1}^n A_{i,i}.
+    $$
+    \begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+        \item Show that for any $B \in R^{n \times m}$ and $C \in \R^{m \times n}$, $\mathrm{Tr}(BC) = \mathrm{Tr}(CB)$.
+        \item Use the previous result to show that for a symmetric matrix $A\in \R^{n\times n}$, its trace is equal to the sum of its eigenvalues.
+    \end{enumerate}
+\end{problem}
+
+\vspace{1cm}
+
+\begin{problem}[3 points]
+    Consider a Washington square squirell trapped in a box divided in 9 rooms. At any point of time, the squirell decides to go through any of the available doors or stay in the room, all actions with equal probability. Use \texttt{numpy} or any other programming language to help you solve this problem.\\
+    
+    \vspace{0.3cm}
+
+    \begin{minipage}{0.2\textwidth}
+        \includegraphics[width=\textwidth]{box.pdf}
+    \end{minipage}
+    \begin{minipage}{0.75\textwidth}
+        \begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+            \item Construct the transition stochastic matrix $P$ for this problem. Can you find an integer $k \leq 1$ such that $P^k$ has only strictly positive entries?
+            \item Find the invariant measure for this problem.
+            \item Using a symmetry argument, show that you can also solve this problem using a $ 3 \times 3$ matrix.
+        \end{enumerate}
+    \end{minipage}
+        
+    % \end{figure}
+\end{problem}
+
+\vspace{1cm}
+
+\begin{problem}[$\star$] A symmetric matrix $M \in \R^n$ is positive semi-definite if, for any $x \in \R^n$,
+    $$x^\top M x \geq 0.$$
+    We say furthermore that $M$ is postive definite if $x^\top M x > 0$ for any non-zero vector.
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})] 
+		\item Show that $M$ is positive semi-definite if and only if its eigenvalues are non-negative.
+		\item Give a necessary and sufficient condition on the spectrum of $M$ for the matrix to be definite positive.
+    \end{enumerate}
+\end{problem}
+
+
+% \centerline{\pgfornament[width=7cm]{87}}
+
+%\bibliographystyle{plain}
+%\bibliography{./references.bib}
+\end{document}

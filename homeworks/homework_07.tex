@@ -1,0 +1,113 @@
+\documentclass[11pt,nocut]{article}
+
+\usepackage{../../latex_style/packages}
+\usepackage{../../latex_style/notations}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{1pt}
+\fancyhead[R]{DSGA1014 - Fall 2021}
+\fancyhead[L]{HW7 - Principal Component Analysis - due October 31, 2021 }
+
+
+\setcounter{section}{7}
+
+\begin{document}
+% \maketitle
+
+\input{../preamble_homeworks.tex}
+\begin{problem}[3 points]
+	We say that a symmetric matrix $M \in \R^{n \times n}$ is \textbf{positive semi-definite} if for all \textbf{non-zero} $x \in \R^n$, $
+	x^{\sT} M x \geq 0$. Furthermore, a symmetric matrix $M \in \R^{n \times n}$ is \textbf{positive definite} if for all \textbf{non-zero} $x \in \R^n$, $
+	x^{\sT} M x > 0$.
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item Let $M \in \R^{n \times n}$ be a symmetric matrix. Show that $M$ is positive semi-definite if and only if its eigenvalues are all non-negative.
+		\item Consider $J_n$ the $n \times n$ matrix of all ones (all entries equal to 1). Show that $J_n$ is positive semi-definite using \normalfont(\textbf{a}).
+		\item Let $M \in \R^{n \times n}$ be a symmetric matrix. Show that there exists $\alpha > 0$ such that the matrix $M + \alpha \Id_n$ is positive definite.
+	\end{enumerate}
+\end{problem}
+
+\vspace{5mm}
+
+\begin{problem}[3 points]
+	Using PCA, we reduce the dimension of a dataset $a_1, \dots, a_n \in \R^d$ of mean zero, to get a <<dimensionally reduced dataset>> $b_1 , \dots, b_n \in \R^k$, for some $1 \leq k \leq d$. We note $A$ the $n \times d$ matrix $$
+    A = \begin{pmatrix}
+        - & a_1^\top & - \\
+        &\vdots& \\
+        - & a_n^\top & -
+    \end{pmatrix}.$$
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item Show that the dataset $b_1, \dots, b_n$ is centered: $\sum_{i = 1}^n b_i = 0$.
+		\item Show that for all $i,j \in \{1, \dots, n\}$, we have
+			$$
+				\|b_i - b_j\| \leq \|a_i - a_j\| \,.
+			$$
+			This means that PCA shrinks the distances.
+		\item For $i \in \{1, \dots, k\}$ we let
+			$$
+			f^{(i)} = (b_{1,i}, b_{2,i}, \dots, b_{n,i}) \in \R^n
+			$$
+			be the vector made of all $i^{\rm th}$ components of the vectors $b_1, \dots, b_n$.
+			Show that for $i \neq j$, $f^{(i)} \perp f^{(j)}$. This means that the new features computed using PCA are uncorrelated. 
+	\end{enumerate}
+\end{problem}
+
+% \newpage
+
+% \begin{problem}[2 points]
+% 	Let $A \in \R^{n \times m}$. The Singular Values Decomposition (SVD) tells us that there exists two orthogonal matrices $U \in \R^{n \times n}$ and $V \in \R^{m \times m}$ and a matrix $\Sigma \in \R^{n \times m}$ such that $\Sigma_{1,1} \geq \Sigma_{2,2}  \geq \cdots \geq 0$ and $\Sigma_{i,j} = 0$ for $i\neq j$
+% 	$$
+% 	A = U \Sigma V^{\sT}.
+% 	$$
+% 	The columns $u_1, \dots, u_n$ of $U$ (respectively the columns $v_1, \dots, v_m$ of $V$) are called the left (resp.\ right) singular vectors of $A$. The non-negative numbers $\sigma_i \defeq \Sigma_{i,i}$ are the singular values of $A$. Moreover we also know that $r \defeq \rank(A) = \# \{i \, | \, \Sigma_{i,i} \neq 0 \}$.
+% 	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+% 		\item Let 
+% 			$\widetilde{U} = \!
+% 			{\small \begin{pmatrix}
+% 					| & & | \\
+% 					u_1 & \!\cdots\! & u_r \\
+% 					| & & | 
+% 			\end{pmatrix} } \! \in \! \R^{n \times r}$ ,
+% 			$\widetilde{V} = \!
+% 			{\small \begin{pmatrix}
+% 					| & & | \\
+% 					v_1 & \!\cdots\! & v_r \\
+% 					| & & | 
+% 			\end{pmatrix} } \! \in \! \R^{m \times r}$ and
+% 			$\widetilde{\Sigma} = \Diag(\sigma_1, \dots, \sigma_r) \in \R^{r \times r}$.
+% 			Show that $A = \widetilde{U}\widetilde{\Sigma}\widetilde{V}^{\sT}$.
+% 		\item Give orthonormal bases of $\Ker(A)$ and $\Im(A)$ in terms of the singular vectors $u_1, \dots, u_n, v_1, \dots , v_m$.
+% 	\end{enumerate}
+% \end{problem}
+
+% \vspace{5mm}
+
+\begin{problem}[3 points]
+	You have been given a mysterious dataset that may contain important informations! This dataset is a collection of $n=6344$ points of dimension $d=1000$.
+	Investigate the structure of this dataset using PCA/plots... , and find out if the dataset contains any information.
+	\\
+
+	The \texttt{zip} file \texttt{mysterious\_data.zip} contains a text file containing the $6344\times 1000$ data matrix.
+	The \emph{Jupyter notebook} \texttt{mysterious\_data.ipynb} contains a function to read the text file.
+\\
+
+	You are not allowed to use any builtin PCA function: you have to do the all process by yourself (centering the data, computing the covariance matrix...). Of course, for computing eigenvalues/eigenvectors you will need to use the numpy library.
+	The numpy function \texttt{numpy.linalg.eigh} is great to compute eigenvalues and eigenvectors of a symmetric matrix. 
+	\\
+
+	\textbf{It is intended that you code in Python and use the provided Jupyter Notebook. Please only submit a pdf version of your notebook (right-click $\to$ `print' $\to$ `Save as pdf').}
+\end{problem}
+
+
+\vspace{5mm}
+
+\begin{problem}[$\star$]
+	Let $A \in \mathbb{R}^{n \times n}$ be a symmetric positive semi-definite matrix. Prove that there exists $B \in \mathbb{R}^{n \times n}$ positive  semi-definite such that $A = B^2$.
+\end{problem}
+
+
+% \centerline{\pgfornament[width=7cm]{87}}
+
+%\bibliographystyle{plain}
+%\bibliography{./references.bib}
+\end{document}

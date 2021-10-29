@@ -1,0 +1,118 @@
+\documentclass[11pt,nocut]{article}
+
+\usepackage{../../latex_style/packages}
+\usepackage{../../latex_style/notations}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{1pt}
+\fancyhead[R]{DSGA1014 - Fall 2021}
+\fancyhead[L]{HW8 - SVD \& Graphs - due November 7, 2021 }
+
+
+\setcounter{section}{8}
+
+\begin{document}
+% \maketitle
+
+\input{../preamble_homeworks.tex}
+
+% \newpage
+
+\begin{problem}[2 points]
+	Let $A \in \R^{n \times m}$. The Singular Values Decomposition (SVD) tells us that there exists two orthogonal matrices $U \in \R^{n \times n}$ and $V \in \R^{m \times m}$ and a matrix $\Sigma \in \R^{n \times m}$ such that $\Sigma_{1,1} \geq \Sigma_{2,2}  \geq \cdots \geq 0$ and $\Sigma_{i,j} = 0$ for $i\neq j$
+	$$
+	A = U \Sigma V^{\sT}.
+	$$
+	The columns $u_1, \dots, u_n$ of $U$ (respectively the columns $v_1, \dots, v_m$ of $V$) are called the left (resp.\ right) singular vectors of $A$. The non-negative numbers $\sigma_i \defeq \Sigma_{i,i}$ are the singular values of $A$. Moreover we also know that $r \defeq \rank(A) = \# \{i \, | \, \Sigma_{i,i} \neq 0 \}$.
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item Let 
+			$\widetilde{U} = \!
+			{\small \begin{pmatrix}
+					| & & | \\
+					u_1 & \!\cdots\! & u_r \\
+					| & & | 
+			\end{pmatrix} } \! \in \! \R^{n \times r}$ ,
+			$\widetilde{V} = \!
+			{\small \begin{pmatrix}
+					| & & | \\
+					v_1 & \!\cdots\! & v_r \\
+					| & & | 
+			\end{pmatrix} } \! \in \! \R^{m \times r}$ and
+			$\widetilde{\Sigma} = \Diag(\sigma_1, \dots, \sigma_r) \in \R^{r \times r}$.
+			Show that $A = \widetilde{U}\widetilde{\Sigma}\widetilde{V}^{\sT}$.
+		\item Give orthonormal bases of $\Ker(A)$ and $\Im(A)$ in terms of the singular vectors $u_1, \dots, u_n$ and $v_1, \dots , v_m$.
+	\end{enumerate}
+\end{problem}
+
+\vspace{5mm}
+
+\begin{problem}[2 points]
+	For any two matrices $A,B \in \R^{n\times m}$ we define the \emph{Frobenius inner-product} as
+	$$
+	\langle A,B \rangle_{F} = \Tr(A^{\sT} B).
+	$$
+	We showed in the midterm that it verifies the points of the definition~2.1 of Lecture~4 for the square matrix case (one can also check that it works for rectangular matrices). Show that the induced norm $\|A\|_F = \sqrt{\Tr(A^{\sT} A)}$ can be computed as a function of the singular values $\sigma_1, \dots, \sigma_{\min(n,m)}$ of $A$ as
+			$$
+			\|A\|_F = \sqrt{\sum_{i=1}^{\min(n,m)} \sigma_i^2}
+			.$$
+\end{problem}
+
+\vspace{1mm}
+
+\begin{problem}[2 points]
+	Let $A \in \R^{n\times n}$ be the adjacency matrix of a graph $G$.
+	We define a << path from a node $i_1$ to a node $i_k$ >> as a succession of nodes $i_1,i_2, \dots, i_{k}$ such that 
+	$$
+	i_1 \sim i_2 \sim \cdots \sim i_{k-1} \sim i_k,
+	\quad \text{i.e.} \quad
+	A_{i_1,i_2} = A_{i_2, i_3} = \cdots = A_{i_{k-1},i_k} = 1.
+	$$
+	The nodes $i_j$ of the path do not need to be distinct. We say that the path $i_1, \dots, i_k$ has length $k-1$ which is the number of edges in this path.
+	The goal of this exercise is to prove that for all $k \geq 1$
+	$$
+	\mathcal{H}(k): \text{<< For all $i,j \in \{1,\dots,n\}$, the number of paths of length $k$ from $i$ to $j$ is $(A^k)_{i,j}$ >>.} 
+	$$
+	We will prove that $\mathcal{H}(k)$ holds for all $k$ by induction, that is, we will first prove that $\mathcal{H}(1)$ is true. Then we will prove that if $\mathcal{H}(k)$ is true for some $k$, then $\mathcal{H}(k+1)$ is true. Combining these two things, we get that $\mathcal{H}(2)$ holds, hence $\mathcal{H}(3)$ holds, hence $\mathcal{H}(4)$ holds... and therefore $\mathcal{H}(k)$ will be true for all $k \geq 1$.
+	
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item Show that $\mathcal{H}(1)$ is true.
+		\item Show that if $\mathcal{H}(k)$ is true for some $k$, then $\mathcal{H}(k+1)$ is also true.
+	\end{enumerate}
+
+
+\end{problem}
+
+\vspace{1mm}
+
+
+\begin{problem}[4 points]
+	The goal of this problem is to use spectral clustering techniques on real data.
+	The file \texttt{adjacency.txt} contains the adjacency matrix of a graph taken from a social network. This graphs has $n=328$ nodes (that corresponds to users). An edge between user $i$ and user $j$ means that $i$ and $j$ are ``friends'' in the social network.
+	The notebook \texttt{friends.ipynb} contains functions to read the adjacency matrix as well as instructions/questions.
+	\\
+
+	While we focused in the lectures (and in the notes) on the graph Laplacian
+	$$
+	L = D - A,
+	$$
+	where $A$ is the adjacency matrix of the graph, and $D = \Diag(\deg(1), \dots, \deg(n))$ is the degree matrix, we will use here the ``normalized Laplacian'' (instead of $L$)
+	$$
+	L_{\rm norm} = D^{-1/2} L D^{-1/2} = \Id_n - D^{-1/2} A D^{-1/2},
+	$$
+	where $D^{-1/2} = \Diag(\deg(1)^{-1/2}, \dots, \deg(n)^{-1/2})$. The reason for using a different Laplacian is that then ``unnormalized Laplacian'' $L$ does not perform well when the degrees in the graph are very broadly distributed, i.e.\ very heterogeneous. In such situations, the normalized Laplacian $L_{\rm norm}$ is supposed to lead to a more consistent clustering.
+
+	\textbf{It is intended that you code in Python and use the provided Jupyter Notebook. Please only submit a pdf version of your notebook (right-click $\to$ `print' $\to$ `Save as pdf').}
+\end{problem}
+
+\vspace{5mm}
+
+\begin{problem}[$\star$]
+	Let $G$ be a connect grpah with $n$ nodes. Define $L \in \R^{n \times n}$ the associate Laplacian matrix and $\lambda_1 \leq \lambda_2 \leq \cdots \leq \lambda_n$ its eigenvalues. Let $G'$ be a graph constructed from $G$ by simply adding an edge. Similarly denote by $\lambda_2'$ its second largest eigenvalue. Show that  $\lambda_2' \geq \lambda_2$. 
+\end{problem}
+
+% \centerline{\pgfornament[width=7cm]{87}}
+
+%\bibliographystyle{plain}
+%\bibliography{./references.bib}
+\end{document}

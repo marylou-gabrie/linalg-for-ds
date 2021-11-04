@@ -1,0 +1,97 @@
+\documentclass[11pt,nocut]{article}
+
+\usepackage{../../latex_style/packages}
+\usepackage{../../latex_style/notations}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{1pt}
+\fancyhead[R]{DSGA1014 - Fall 2021}
+\fancyhead[L]{HW9 - Convex functions - due November 14, 2021 }
+
+
+\setcounter{section}{9}
+
+\begin{document}
+% \maketitle
+
+\input{../preamble_homeworks.tex}
+
+% \newpage
+
+\hspace{-0.6cm}\textbf{Special warning:} In this homework, your answers from one problem may help solving another one.
+
+
+\begin{problem}[2 points]
+	Let $f: \R^n \to \R$ be a convex function. We assume that the minimum $m \defeq \min_{x \in \R^n} f(x)$ of $f$ on $\R^n$ is finite, and that the set of minimizers of $f$
+$$
+\mathcal{M} \defeq \big\{ v \in \R^n \, \big| \, f(v) = m \big\}
+$$
+is non-empty.
+
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item Show that $\mathcal{M}$ is a convex set.
+		\item Show that if $f$ is strictly convex, then $\mathcal{M}$ has only one element.
+	\end{enumerate}
+
+\end{problem}
+
+\vspace{4mm}
+
+\begin{problem}[2 points]
+	Let $M \in \R^{n \times n}$ be a symmetric matrix, $b \in \R^n$ and $c \in \R$.
+	For $x \in \R^n$ we define
+	$$
+	f(x) = x^{\sT} M x + \langle x,b \rangle + c.
+	$$
+	$f$ is called a quadratic function.
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item Compute the gradient $\nabla f(x)$ and the Hessian $H_f(x)$ at all $x \in \R^n$ (show the steps of your computations). Show that $f$ is convex if and only if $M$ is positive semi-definite.
+		\item In this question, we assume $M$ to be positive semi-definite. Show that $f$ admits a minimizer if and only if $b \in \Im(M)$.
+	\end{enumerate}
+\end{problem}
+
+\newpage
+
+\begin{problem}[3 points]\label{prob:strongly_convex}
+	We say that a function $f: \R^n \to \R$ is strongly convex if there exists $\alpha >0$ such that the function $x \mapsto f(x) - \frac{\alpha}{2} \|x\|^2$ is convex. In other words, $f$ is strongly convex if there exists $\alpha > 0$ and a convex function $g: \R^n \to \R$ such that 
+	$$
+	f(x) = g(x) + \frac{\alpha}{2} \|x\|^2.
+	$$
+	
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item Show that a strongly convex function is strictly convex. (Hint: start by showing that $x \mapsto \|x\|^2$ is strictly convex).
+		\item Let $\varphi:\R^n \to \R$ be a twice differentiable function. Show that $\varphi$ is strongly convex if and only if there exists $\alpha >0$ such that for all $x \in \R^n$ the eigenvalues of $H_{\varphi}(x)$ are greater or equal than $\alpha$.
+	\end{enumerate}
+\end{problem}
+
+
+\vspace{4mm}
+
+\begin{problem}[3 points]
+	Let $A \in \R^{n \times m}$ and $y \in \R^n$.
+	For $x \in \R^m$ we define
+	$$
+	f(x) = \|Ax-y\|^2.
+	$$
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item Compute the gradient $\nabla f(x)$ and the Hessian $H_f(x)$ at all $x \in \R^m$. Show that $f$ is convex.
+		\item Show that if $\rank(A)<m$, then $f$ is not strictly convex.
+		\item Show that if $\rank(A)=m$, then $f$ is strongly convex.
+	\end{enumerate}
+\end{problem}
+
+\vspace{4mm}
+
+\begin{problem}[$\star$] Is the following function $f$ convex? Compute its Hessian to conclude.
+	 $$\begin{array}{cccl}
+        f: & \R^n & \to & \R \\
+           & x & \mapsto & f(x) = \ln(e^{x_1} + \cdots + e^{x_n})
+        \end{array}$$
+
+
+\end{problem}
+
+%\bibliographystyle{plain}
+%\bibliography{./references.bib}
+\end{document}

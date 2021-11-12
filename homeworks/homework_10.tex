@@ -1,0 +1,96 @@
+\documentclass[11pt,nocut]{article}
+
+\usepackage{../../latex_style/packages}
+\usepackage{../../latex_style/notations}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{1pt}
+\fancyhead[R]{DSGA1014 - Fall 2021}
+\fancyhead[L]{HW10 - Linear Regression - due November 21, 2021 }
+
+
+\setcounter{section}{10}
+
+\begin{document}
+% \maketitle
+
+\input{../preamble_homeworks.tex}
+
+% \newpage
+
+%\begin{problem}[2 points]
+	%Let $A \in \R^{n \times m}$. Show that if $A$ has linearly independent columns, then $A^{\dagger} = (A^{\sT}A)^{-1} A^{\sT}$.
+%\end{problem}
+
+%\vspace{4mm}
+
+\begin{problem}[2 points]
+	Let $A \in \R^{n \times m}$ and $y \in \R^n$. We consider the least square problem:
+	\begin{equation}\label{eq:LS}
+		\text{minimize} \quad \|Ax-y\|^2 \quad \text{with respect to} \ x \in \R^m.
+	\end{equation}
+	We know from the lecture that $x^{\rm LS} \defeq A^{\dagger}y$ is a solution of \eqref{eq:LS}. 
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item Show that $x^{\rm LS} \perp \Ker(A)$.
+		\item Deduce that $x^{\rm LS}$ is the solution of \eqref{eq:LS} that has the smallest (Euclidean) norm.
+	\end{enumerate}
+\end{problem}
+
+\vspace{4mm}
+
+\begin{problem}[2 points]
+	Let $A \in \R^{n \times d}$ and $y \in \R^n$.
+	The Ridge regression adds a $\ell_2$ penalty to the least square problem:
+	\begin{equation}\label{eq:ridge}
+		\text{minimize} \qquad
+		\| Ax - y \|^2 + \lambda \|x\|^2 \qquad \text{with respect to} \ x \in \R^d,
+	\end{equation}
+	for some penalization parameter $\lambda >0$.
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item Without solving \eqref{eq:ridge}, show that \eqref{eq:ridge} admits a unique solution. You can use HW9 results but you must justify everything precisely.
+		\item Show that this solution is given by
+		$$
+		x^{\rm Ridge} = (A^{\sT} A + \lambda \Id_d)^{-1} A^{\sT} y.
+		$$ 
+		Justify your answer precisely, including why $(A^{\sT} A + \lambda \Id_d)^{-1}$ exists.
+	\end{enumerate}
+	
+\end{problem}
+
+\vspace{4mm}
+
+\begin{problem}[2 points]
+	Recall that $\|M\|_{\rm Sp}$ denotes the spectral norm of a matrix $M$.
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item Let $A\in \R^{n \times m}.$ Show that for all $x \in \R^m$,
+			$$
+			\|Ax\| \leq \|A\|_{\rm Sp} \|x\|.
+			$$
+		\item Show that for all $A \in \R^{n \times m}$ and $B\in \R^{m \times k}$:
+			$$
+			\|AB\|_{\rm Sp} \leq \|A\|_{\rm Sp} \|B\|_{\rm Sp}.
+			$$
+	\end{enumerate}
+\end{problem}
+
+\vspace{4mm}
+
+\begin{problem}[3 points]
+	In this problem we will investigate the role of ridge regularization in polynomial regression. This problem can be solved using our linear regression tools using a trick described in the notebook \texttt{polyreg.ipynb}, which also contains instructions and questions. Please merge a pdf version of the notebook completed to your submission.
+\end{problem}
+
+\vspace{4mm}
+
+\begin{problem}[$\star$]
+Is it true that for all $n,m,k \geq 1$, all $A \in \R^{n \times m}$ and $B\in \R^{m \times k}$:
+			$$
+			\|AB\|_{F} \leq \|A\|_{F} \|B\|_{F} \ {\rm ?}
+			$$
+			Give a proof or a counter-example.
+\end{problem}
+
+
+%\bibliographystyle{plain}
+%\bibliography{./references.bib}
+\end{document}

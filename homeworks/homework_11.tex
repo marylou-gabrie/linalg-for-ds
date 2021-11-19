@@ -1,0 +1,118 @@
+\documentclass[11pt,nocut]{article}
+
+\usepackage{../../latex_style/packages}
+\usepackage{../../latex_style/notations}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{1pt}
+\fancyhead[R]{DSGA1014 - Fall 2021}
+\fancyhead[L]{HW11 - Optimality conditions - due Dec 2nd, 2021 }
+
+
+\setcounter{section}{11}
+
+\begin{document}
+% \maketitle
+
+\input{../preamble_homeworks.tex}
+
+% \newpage
+
+\begin{problem}[2 points]
+	Compute critical points of $f$, $g$ and $h$ and determine if they are global/local maximizers/minimizers or saddle points. To determine the signs of eigenvalues it might useful to remember that for $M \in \R^{n\times n}$ symmetric, $\mathrm{tr}(M) = \sum_{i=1}^n M_{i,i} = \sum_{i=1}^n \lambda_i$.
+
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item $f: \R \to \R$ with $f(x) = (x^2 - 1)^2$.
+		\item $g: \R^3 \to \R$ with $g(x, y, z) = (x^2 - z^2) y + 2$
+		\item $h: \R^3 \to \R$ with $h(x,y,z) = x^2 + y^2 + z^2 - 6x + 10y - 2z + 35$
+	\end{enumerate}
+\end{problem}
+
+\vspace{5mm}
+
+\begin{problem}[2 points]
+	We consider the following constrained optimization problem in $\R^2$:
+	\begin{equation}
+		\label{eq:p}
+	\text{minimize} \quad x^2 + y^2 \quad \text{subject to} \quad 2x +  y = 4.
+	\end{equation}
+	We admit that this minimization problem has (at least) one solution (this comes from the fact that a continuous function on a compact set attains its minimum).
+	\\
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item Using Lagrange multipliers, show that \eqref{eq:p} has a unique solution and compute its coordinates.
+		\item Can you draw a picture in $\R^2$ representing the problem? 
+	\end{enumerate}
+\end{problem}
+
+\vspace{5mm}
+
+\begin{problem}[2 points]
+	Let $u \in \R^n$ be a vector such that for all $i \neq j$, $|u_i| \neq |u_j|$. We consider the constrained optimization problem
+	$$
+	\text{maximize} \quad \langle u ,x \rangle \quad \text{subject to} \quad \|x\|_1 \leq 1.
+	$$
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item Calling $i_*$ the index at which $|u_i|$ is maximum, give a solution for the optimization problem (no Lagrange multiplier needed). 
+		\item By contradiction, show that this solution is unique.
+		\item Give a graphical interpretation in the case $n=2$. You should consider the orthogonal projector onto $\Span(u)$.
+	\end{enumerate}
+\end{problem}
+
+\newpage
+
+\begin{problem}[3 points]
+	\emph{\textbf{We will prove the spectral theorem in this problem: you are therefore not allowed to use the spectral theorem and its consequences to solve this exercise.}}
+
+	Let $A$ be an $n \times n$ symmetric matrix. We consider the following optimization problem
+	\begin{equation}\label{eq:eig1}
+		\text{maximize} \quad x^{\sT} A x \quad \text{subject to} \quad \|x\| = 1.
+	\end{equation}
+	This optimization problem admits a solution (this comes from the fact that a continuous function on a compact set achieved its maximum) that we denote by $v_1$.
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item Using Lagrange multipliers, show that $v_1$ is an eigenvector of $A$.
+		\item We now consider the optimization problem
+	\begin{equation}\label{eq:eig2}
+		\text{maximize} \quad x^{\sT} A x \quad \text{subject to} \quad \|x\| = 1
+		\quad \text{and} \quad \langle x,v_1 \rangle = 0.
+	\end{equation}
+	For the same reason as above, this problem admits a solution that we denote by $v_2$. Show that $v_2$ is an eigenvector of $A$ that is orthogonal to $v_1$.
+		\item We now consider the optimization problem
+	\begin{equation}\label{eq:eig3}
+		\text{maximize} \quad x^{\sT} A x \quad \text{subject to} \quad \|x\| = 1
+		\quad \text{and} \quad \langle x,v_1 \rangle = 0
+		\quad \text{and} \quad \langle x,v_2 \rangle = 0.
+	\end{equation}
+	Again, this problem admits a solution that we denote by $v_3$. Show that $v_3$ is an eigenvector of $A$ that is orthogonal to $v_1$ and $v_2$.
+	\end{enumerate}
+	\emph{
+		\textbf{Conclusion}: by repeating this procedure, we obtain an orthonormal family $v_1, \dots, v_n$ of eigenvectors of $A$. This proves the spectral theorem (without using any linear algebra result!).
+	}
+\end{problem}
+
+\vspace{5mm}
+
+\begin{problem}[$\star$]
+	We consider the problem with physics motivation of finding the maximal entropy distribution of a random variable (see last slides of Lecture 09)  constraining values of some moments. \\
+	
+
+	To keep things simple, we consider $X$ that can take $n$ different values $x_1, \cdots, x_n$ in $\R$. We wish to infer the probabilities $p_1, \cdots, p_n$ such that the entropy is maximal and the expected value of $X$ is equal to a previously known scalar $\mu \in \R$. This corresponds to solving the contrained optimization problem
+	\begin{equation}\label{eq:eig3}
+		\text{maximize} \quad - \sum_i p_i \ln p_i \quad \text{subject to} \quad p_i \leq 1 \text{ for all } i
+		\quad \text{and} \quad \sum_{i=1}^n p_i = 1
+		\quad \text{and} \quad \sum_{i=1}^n p_i x_i = \mu.
+	\end{equation}
+	\begin{enumerate}[label=\normalfont(\textbf{\alph*})]
+		\item Rewrite the problem as a convex minimization problem (justify).
+		\item Using KKT theorem, give the expression of the probability vector solution $p \in \R^n$ as a function of Lagrange multipliers and values $x_i$. Give also the relations between the Lagrange multipliers, $\mu$ and values $x_i$.
+		\item In the case where $n=2$ and $x_1=0$ and $x_2=1$, solve for the values of the Lagrange multipliers and $p \in \R^2$. Could you have used an easier way to solve the problem in this simple case?
+
+	\end{enumerate}
+
+\end{problem}
+
+
+
+%\bibliographystyle{plain}
+%\bibliography{./references.bib}
+\end{document}

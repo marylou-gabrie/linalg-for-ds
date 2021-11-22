@@ -98,7 +98,7 @@
 
 	To keep things simple, we consider $X$ that can take $n$ different values $x_1, \cdots, x_n$ in $\R$. We wish to infer the probabilities $p_1, \cdots, p_n$ such that the entropy is maximal and the expected value of $X$ is equal to a previously known scalar $\mu \in \R$. This corresponds to solving the contrained optimization problem
 	\begin{equation}\label{eq:eig3}
-		\text{maximize} \quad - \sum_i p_i \ln p_i \quad \text{subject to} \quad p_i \leq 1 \text{ for all } i
+		\text{maximize} \quad - \sum_i p_i \ln p_i \quad \text{subject to} \quad p_i \geq 0 \text{ for all } i
 		\quad \text{and} \quad \sum_{i=1}^n p_i = 1
 		\quad \text{and} \quad \sum_{i=1}^n p_i x_i = \mu.
 	\end{equation}

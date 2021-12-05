@@ -32,12 +32,12 @@
 \vspace{5mm}
 
 \begin{problem}[5 points]\label{p:grad}
-	Let $M \in \R^{d \times d}$ be a positive semidefinite matrix, $b \in \R^d$ and $c \in \R$. We aim at minimizing the quadratic function
+	Let $M \in \R^{d \times d}$ be a positive definite matrix, $b \in \R^d$ and $c \in \R$. We aim at minimizing the quadratic function
 	$$
 	f(x) = \frac{1}{2} x^{\sT} M x - \langle x,b \rangle + c
 	$$
 	using gradient descent. 
-	We assume that $M$ is positive definite (i.e.\ all its eigenvalues are positive).
+	Since we assume that $M$ is positive definite (i.e.\ all its eigenvalues are positive).
 	We let $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_d >0$ be its eigenvalues and let $v_1, \dots, v_d$ be an orthonormal basis of $\R^d$ consisting of associated eigenvectors ($Mv_i = \lambda_i v_i$ for all $i$).
 	We write $L = \lambda_1$ and $\mu = \lambda_d$.
 	\\
